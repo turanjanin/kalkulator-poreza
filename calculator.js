@@ -349,7 +349,7 @@ document.addEventListener('DOMContentLoaded', () => {
     entrepreneurSalaryField.addEventListener('input', updateEntrepreneur);
     entrepreneurExpensesField.addEventListener('input', updateEntrepreneur);
 
-    document.querySelectorAll('.variant .heading').forEach((element) => {
+    document.querySelectorAll('.section .heading').forEach((element) => {
         element.addEventListener('click', (event) => {
             event.currentTarget.parentElement.classList.toggle('open');
         })

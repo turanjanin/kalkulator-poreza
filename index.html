@@ -51,17 +51,20 @@
 
     <section class="section settings">
         <div>
-            <h3>Подешавања (ажурирана за 2024. годину)</h3>
-
-            <div class="field">
-                <label for="untaxable-income">
-                    Неопорезиви износ зараде:
-                    <div class="description"><a href="https://www.paragraf.rs/statistika/pregled_uskladjenih_neoporezivih_iznosa_po_zakonu_o_porezu_na_dohodak_gradjana.html" target="_blank">Проверите актуелне вредности</a></div>
-                </label>
-                <div class="amount amount--rsd">
-                    <input type="number" inputmode="numeric" id="untaxable-income" name="untaxable_income" min="0" value="25000.00" required />
-                </div>
+            <div class="heading">
+                <h3>Подешавања (ажурирана за 2024. годину)</h3>
             </div>
+
+            <div class="details">
+                <div class="field">
+                    <label for="untaxable-income">
+                        Неопорезиви износ зараде:
+                        <div class="description"><a href="https://www.paragraf.rs/statistika/pregled_uskladjenih_neoporezivih_iznosa_po_zakonu_o_porezu_na_dohodak_gradjana.html" target="_blank">Проверите актуелне вредности</a></div>
+                    </label>
+                    <div class="amount amount--rsd">
+                        <input type="number" inputmode="numeric" id="untaxable-income" name="untaxable_income" min="0" value="25000.00" required />
+                    </div>
+                </div>
 
 <!--                <div class="field">-->
 <!--                    <label for="eco-tax">Еко такса:</label>-->
@@ -70,53 +73,54 @@
 <!--                    </div>-->
 <!--                </div>-->
 
-            <div class="field">
-                <label for="contribution-base-min">
-                    Минимална основица за доприносе:
-                    <div class="description"><a href="https://www.pio.rs/osnovice-za-uplatu-doprinosa" target="_blank">Проверите актуелне вредности</a></div>
-                </label>
-                <div class="amount amount--rsd">
-                    <input type="number" inputmode="numeric" class="currency currency--rsd" id="contribution-base-min" name="contribution_base_min" min="0" value="40143.00" required />
+                <div class="field">
+                    <label for="contribution-base-min">
+                        Минимална основица за доприносе:
+                        <div class="description"><a href="https://www.pio.rs/osnovice-za-uplatu-doprinosa" target="_blank">Проверите актуелне вредности</a></div>
+                    </label>
+                    <div class="amount amount--rsd">
+                        <input type="number" inputmode="numeric" class="currency currency--rsd" id="contribution-base-min" name="contribution_base_min" min="0" value="40143.00" required />
+                    </div>
                 </div>
-            </div>
 
-            <div class="field">
-                <label for="contribution-base-max">
-                    Максимална основица за доприносе:
-                    <div class="description"><a href="https://www.pio.rs/osnovice-za-uplatu-doprinosa" target="_blank">Проверите актуелне вредности</a></div>
-                </label>
-                <div class="amount amount--rsd">
-                    <input type="number" inputmode="numeric" class="currency currency--rsd" id="contribution-base-max" name="contribution_base_max" min="0" value="573470.00" required />
+                <div class="field">
+                    <label for="contribution-base-max">
+                        Максимална основица за доприносе:
+                        <div class="description"><a href="https://www.pio.rs/osnovice-za-uplatu-doprinosa" target="_blank">Проверите актуелне вредности</a></div>
+                    </label>
+                    <div class="amount amount--rsd">
+                        <input type="number" inputmode="numeric" class="currency currency--rsd" id="contribution-base-max" name="contribution_base_max" min="0" value="573470.00" required />
+                    </div>
                 </div>
-            </div>
 
-            <div class="field">
-                <label for="freelancer-minimal-health">
-                    Фриленсер, минимални допринос за здравство:
-                    <div class="description"><a href="https://frilenseri.purs.gov.rs/najcesca-pitanja.html?t=&tid=28598&ot=#searchContainer" target="_blank">Проверите актуелне вредности</a></div>
-                </label>
-                <div class="amount amount--rsd">
-                    <input type="number" inputmode="numeric" class="currency currency--rsd" id="freelancer-minimal-health" name="freelancer_minimal_health" min="0" value="5497.00" required />
+                <div class="field">
+                    <label for="freelancer-minimal-health">
+                        Фриленсер, минимални допринос за здравство:
+                        <div class="description"><a href="https://frilenseri.purs.gov.rs/najcesca-pitanja.html?t=&tid=28598&ot=#searchContainer" target="_blank">Проверите актуелне вредности</a></div>
+                    </label>
+                    <div class="amount amount--rsd">
+                        <input type="number" inputmode="numeric" class="currency currency--rsd" id="freelancer-minimal-health" name="freelancer_minimal_health" min="0" value="5497.00" required />
+                    </div>
                 </div>
-            </div>
 
-            <div class="field">
-                <label for="freelancer1-standardized-costs">
-                    Фриленсер, опција 1 - нормирани трошкови:
-                    <div class="description"><a href="https://frilenseri.purs.gov.rs/najcesca-pitanja.html?t=&tid=28598&ot=#searchContainer" target="_blank">Проверите актуелне вредности</a></div>
-                </label>
-                <div class="amount amount--rsd">
-                    <input type="number" inputmode="numeric" class="currency currency--rsd" id="freelancer1-standardized-costs" name="freelancer1_standardized_costs" min="0" value="103296.00" required />
+                <div class="field">
+                    <label for="freelancer1-standardized-costs">
+                        Фриленсер, опција 1 - нормирани трошкови:
+                        <div class="description"><a href="https://frilenseri.purs.gov.rs/najcesca-pitanja.html?t=&tid=28598&ot=#searchContainer" target="_blank">Проверите актуелне вредности</a></div>
+                    </label>
+                    <div class="amount amount--rsd">
+                        <input type="number" inputmode="numeric" class="currency currency--rsd" id="freelancer1-standardized-costs" name="freelancer1_standardized_costs" min="0" value="103296.00" required />
+                    </div>
                 </div>
-            </div>
 
-            <div class="field">
-                <label for="freelancer2-standardized-costs">
-                    Фриленсер, опција 2 - нормирани трошкови:
-                    <div class="description"><a href="https://frilenseri.purs.gov.rs/najcesca-pitanja.html?t=&tid=28598&ot=#searchContainer" target="_blank">Проверите актуелне вредности</a></div>
-                </label>
-                <div class="amount amount--rsd">
-                    <input type="number" inputmode="numeric" class="currency currency--rsd" id="freelancer2-standardized-costs" name="freelancer2_standardized_costs" min="0" value="62300.00" required />
+                <div class="field">
+                    <label for="freelancer2-standardized-costs">
+                        Фриленсер, опција 2 - нормирани трошкови:
+                        <div class="description"><a href="https://frilenseri.purs.gov.rs/najcesca-pitanja.html?t=&tid=28598&ot=#searchContainer" target="_blank">Проверите актуелне вредности</a></div>
+                    </label>
+                    <div class="amount amount--rsd">
+                        <input type="number" inputmode="numeric" class="currency currency--rsd" id="freelancer2-standardized-costs" name="freelancer2_standardized_costs" min="0" value="62300.00" required />
+                    </div>
                 </div>
             </div>
         </div>

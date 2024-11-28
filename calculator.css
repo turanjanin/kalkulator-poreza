@@ -75,10 +75,6 @@ h1, h2, h3 {
     color: inherit;
 }
 
-.section h3 {
-    margin-bottom: 0.5em;
-}
-
 .field {
     display: flex;
     align-items: center;
@@ -94,11 +90,11 @@ h1, h2, h3 {
     flex-shrink: 0;
 }
 
-.variant .details {
+.details {
     display: none;
 }
 
-.variant.open .details {
+.open .details {
     display: block;
 }
 
