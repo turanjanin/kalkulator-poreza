@@ -19,7 +19,7 @@
                     <strong>Месечна бруто 2 зарада у страној валути:</strong>
                 </label>
                 <div class="amount highlighted">
-                    <input type="number" id="bruto2-foreign" name="bruto2_foreign" min="100" step="100" value="3000.00" autofocus autocomplete="off" />
+                    <input type="number" inputmode="numeric" id="bruto2-foreign" name="bruto2_foreign" min="100" step="100" value="3000.00" autofocus autocomplete="off" />
                 </div>
             </div>
 
@@ -33,7 +33,7 @@
             <div class="field">
                 <label for="exchange-rate">Курс стране валуте:</label>
                 <div class="amount amount--rsd highlighted">
-                    <input type="number" id="exchange-rate" name="exchange_rate" value="117.00" min="0" step="0.01" required />
+                    <input type="number" inputmode="decimal" id="exchange-rate" name="exchange_rate" value="117.00" min="0" step="0.01" required />
                 </div>
             </div>
 
@@ -59,14 +59,14 @@
                     <div class="description"><a href="https://www.paragraf.rs/statistika/pregled_uskladjenih_neoporezivih_iznosa_po_zakonu_o_porezu_na_dohodak_gradjana.html" target="_blank">Проверите актуелне вредности</a></div>
                 </label>
                 <div class="amount amount--rsd">
-                    <input type="number" id="untaxable-income" name="untaxable_income" min="0" value="25000.00" required />
+                    <input type="number" inputmode="numeric" id="untaxable-income" name="untaxable_income" min="0" value="25000.00" required />
                 </div>
             </div>
 
 <!--                <div class="field">-->
 <!--                    <label for="eco-tax">Еко такса:</label>-->
 <!--                    <div class="amount amount&#45;&#45;rsd">-->
-<!--                        <input type="number" class="currency currency&#45;&#45;rsd" id="eco-tax" name="eco_tax" min="0" value="5000.00" required />-->
+<!--                        <input type="number" inputmode="numeric" class="currency currency&#45;&#45;rsd" id="eco-tax" name="eco_tax" min="0" value="5000.00" required />-->
 <!--                    </div>-->
 <!--                </div>-->
 
@@ -76,7 +76,7 @@
                     <div class="description"><a href="https://www.pio.rs/osnovice-za-uplatu-doprinosa" target="_blank">Проверите актуелне вредности</a></div>
                 </label>
                 <div class="amount amount--rsd">
-                    <input type="number" class="currency currency--rsd" id="contribution-base-min" name="contribution_base_min" min="0" value="40143.00" required />
+                    <input type="number" inputmode="numeric" class="currency currency--rsd" id="contribution-base-min" name="contribution_base_min" min="0" value="40143.00" required />
                 </div>
             </div>
 
@@ -86,7 +86,7 @@
                     <div class="description"><a href="https://www.pio.rs/osnovice-za-uplatu-doprinosa" target="_blank">Проверите актуелне вредности</a></div>
                 </label>
                 <div class="amount amount--rsd">
-                    <input type="number" class="currency currency--rsd" id="contribution-base-max" name="contribution_base_max" min="0" value="573470.00" required />
+                    <input type="number" inputmode="numeric" class="currency currency--rsd" id="contribution-base-max" name="contribution_base_max" min="0" value="573470.00" required />
                 </div>
             </div>
 
@@ -96,7 +96,7 @@
                     <div class="description"><a href="https://frilenseri.purs.gov.rs/najcesca-pitanja.html?t=&tid=28598&ot=#searchContainer" target="_blank">Проверите актуелне вредности</a></div>
                 </label>
                 <div class="amount amount--rsd">
-                    <input type="number" class="currency currency--rsd" id="freelancer-minimal-health" name="freelancer_minimal_health" min="0" value="5497.00" required />
+                    <input type="number" inputmode="numeric" class="currency currency--rsd" id="freelancer-minimal-health" name="freelancer_minimal_health" min="0" value="5497.00" required />
                 </div>
             </div>
 
@@ -106,7 +106,7 @@
                     <div class="description"><a href="https://frilenseri.purs.gov.rs/najcesca-pitanja.html?t=&tid=28598&ot=#searchContainer" target="_blank">Проверите актуелне вредности</a></div>
                 </label>
                 <div class="amount amount--rsd">
-                    <input type="number" class="currency currency--rsd" id="freelancer1-standardized-costs" name="freelancer1_standardized_costs" min="0" value="103296.00" required />
+                    <input type="number" inputmode="numeric" class="currency currency--rsd" id="freelancer1-standardized-costs" name="freelancer1_standardized_costs" min="0" value="103296.00" required />
                 </div>
             </div>
 
@@ -116,7 +116,7 @@
                     <div class="description"><a href="https://frilenseri.purs.gov.rs/najcesca-pitanja.html?t=&tid=28598&ot=#searchContainer" target="_blank">Проверите актуелне вредности</a></div>
                 </label>
                 <div class="amount amount--rsd">
-                    <input type="number" class="currency currency--rsd" id="freelancer2-standardized-costs" name="freelancer2_standardized_costs" min="0" value="62300.00" required />
+                    <input type="number" inputmode="numeric" class="currency currency--rsd" id="freelancer2-standardized-costs" name="freelancer2_standardized_costs" min="0" value="62300.00" required />
                 </div>
             </div>
         </div>
@@ -317,7 +317,7 @@
                         </div>
                     </label>
                     <div class="amount amount--rsd highlighted">
-                        <input type="number" id="lump-sum-tax" name="lump_sum_tax" min="0" step="100" value="60000.00" required />
+                        <input type="number" inputmode="numeric" id="lump-sum-tax" name="lump_sum_tax" min="0" step="100" value="60000.00" required />
                     </div>
                 </div>
             </div>
@@ -367,7 +367,7 @@
                         <div class="description">Не може бити мања од минималне основице за доприносе. Ово је износ на који се плаћају доприноси.</div>
                     </label>
                     <div class="amount amount--rsd highlighted">
-                        <input type="number" id="entrepreneur-salary" name="entrepreneur_salary" min="0" step="1000" value="40143.00" required />
+                        <input type="number" inputmode="numeric" id="entrepreneur-salary" name="entrepreneur_salary" min="0" step="1000" value="40143.00" required />
                     </div>
                 </div>
                 <div class="field">
@@ -376,7 +376,7 @@
                         <div class="description">Трошкови књиговође, опреме за рад, закупа простора и слично</div>
                     </label>
                     <div class="amount amount--rsd highlighted">
-                        <input type="number" id="entrepreneur-expenses" name="entrepreneur_expenses" min="0" step="1000" value="10000.00" required />
+                        <input type="number" inputmode="numeric" id="entrepreneur-expenses" name="entrepreneur_expenses" min="0" step="1000" value="10000.00" required />
                     </div>
                 </div>
                 <div class="field mt-1">
