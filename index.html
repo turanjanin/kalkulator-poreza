@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kalkulator poreza na zarade, bruto 2 u neto</title>
+    <meta name="description" content="Uporedni kalkulator poreza za frilensere, paušalce, preduzetnike koji isplaćuju ličnu zaradu i redovno zaposlene osobe. Obračun bruto 2 u neto." />
+    <link rel="stylesheet" href="calculator.css" />
+</head>
+<body>
+
+<main class="container">
+    <h1>Калкулатор пореза на зараде</h1>
+
+    <section class="section earnings">
+        <div>
+            <div class="field">
+                <label for="bruto2-foreign">
+                    <strong>Месечна бруто 2 зарада у страној валути:</strong>
+                </label>
+                <div class="amount highlighted">
+                    <input type="number" id="bruto2-foreign" name="bruto2_foreign" min="100" step="100" value="3000.00" autofocus autocomplete="off" />
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="key">Годишња бруто 2 зарада у страној валути:</div>
+                <div class="value" data-value="bruto2-foreign-yearly"></div>
+            </div>
+        </div>
+
+        <div>
+            <div class="field">
+                <label for="exchange-rate">Курс стране валуте:</label>
+                <div class="amount amount--rsd highlighted">
+                    <input type="number" id="exchange-rate" name="exchange_rate" value="117.00" min="0" step="0.01" required />
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="key">Месечна бруто 2 зарада у динарима:</div>
+                <div class="value" data-value="bruto2"></div>
+            </div>
+
+            <div class="field">
+                <div class="key">Годишња бруто 2 зарада у динарима:</div>
+                <div class="value" data-value="bruto2-yearly"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section settings">
+        <div>
+            <h3>Подешавања (ажурирана за 2024. годину)</h3>
+
+            <div class="field">
+                <label for="untaxable-income">
+                    Неопорезиви износ зараде:
+                    <div class="description"><a href="https://www.paragraf.rs/statistika/pregled_uskladjenih_neoporezivih_iznosa_po_zakonu_o_porezu_na_dohodak_gradjana.html" target="_blank">Проверите актуелне вредности</a></div>
+                </label>
+                <div class="amount amount--rsd">
+                    <input type="number" id="untaxable-income" name="untaxable_income" min="0" value="25000.00" required />
+                </div>
+            </div>
+
+<!--                <div class="field">-->
+<!--                    <label for="eco-tax">Еко такса:</label>-->
+<!--                    <div class="amount amount&#45;&#45;rsd">-->
+<!--                        <input type="number" class="currency currency&#45;&#45;rsd" id="eco-tax" name="eco_tax" min="0" value="5000.00" required />-->
+<!--                    </div>-->
+<!--                </div>-->
+
+            <div class="field">
+                <label for="contribution-base-min">
+                    Минимална основица за доприносе:
+                    <div class="description"><a href="https://www.pio.rs/osnovice-za-uplatu-doprinosa" target="_blank">Проверите актуелне вредности</a></div>
+                </label>
+                <div class="amount amount--rsd">
+                    <input type="number" class="currency currency--rsd" id="contribution-base-min" name="contribution_base_min" min="0" value="40143.00" required />
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="contribution-base-max">
+                    Максимална основица за доприносе:
+                    <div class="description"><a href="https://www.pio.rs/osnovice-za-uplatu-doprinosa" target="_blank">Проверите актуелне вредности</a></div>
+                </label>
+                <div class="amount amount--rsd">
+                    <input type="number" class="currency currency--rsd" id="contribution-base-max" name="contribution_base_max" min="0" value="573470.00" required />
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="freelancer-minimal-health">
+                    Фриленсер, минимални допринос за здравство:
+                    <div class="description"><a href="https://frilenseri.purs.gov.rs/najcesca-pitanja.html?t=&tid=28598&ot=#searchContainer" target="_blank">Проверите актуелне вредности</a></div>
+                </label>
+                <div class="amount amount--rsd">
+                    <input type="number" class="currency currency--rsd" id="freelancer-minimal-health" name="freelancer_minimal_health" min="0" value="5497.00" required />
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="freelancer1-standardized-costs">
+                    Фриленсер, опција 1 - нормирани трошкови:
+                    <div class="description"><a href="https://frilenseri.purs.gov.rs/najcesca-pitanja.html?t=&tid=28598&ot=#searchContainer" target="_blank">Проверите актуелне вредности</a></div>
+                </label>
+                <div class="amount amount--rsd">
+                    <input type="number" class="currency currency--rsd" id="freelancer1-standardized-costs" name="freelancer1_standardized_costs" min="0" value="103296.00" required />
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="freelancer2-standardized-costs">
+                    Фриленсер, опција 2 - нормирани трошкови:
+                    <div class="description"><a href="https://frilenseri.purs.gov.rs/najcesca-pitanja.html?t=&tid=28598&ot=#searchContainer" target="_blank">Проверите актуелне вредности</a></div>
+                </label>
+                <div class="amount amount--rsd">
+                    <input type="number" class="currency currency--rsd" id="freelancer2-standardized-costs" name="freelancer2_standardized_costs" min="0" value="62300.00" required />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section variants">
+        <div class="variant freelancer1">
+            <div class="heading">
+                <h2>Фриленсер - опција 1</h2>
+            </div>
+
+            <div class="distribution">
+                <div class="values">
+                    <div data-value="freelancer1-neto-percentage"></div>
+                    <div data-value="freelancer1-tax-percentage"></div>
+                </div>
+                <div class="bar"><span></span></div>
+                <div class="labels">
+                    <div>нето</div>
+                    <div>порези и доприноси</div>
+                </div>
+            </div>
+
+            <div class="details">
+                <div class="field">
+                    <div class="key">Квартална зарада:</div>
+                    <div class="value" data-value="freelancer1-quarterly-earnings"></div>
+                </div>
+                <div class="field">
+                    <div class="key">
+                        Нормирани трошкови:
+                        <div class="description">Фиксни износ који се одређује сваке године</div>
+                    </div>
+                    <div class="value" data-value="freelancer1-standardized-costs"></div>
+                </div>
+                <div class="field mb-1">
+                    <div class="key">
+                        Пореска основица:
+                        <div class="description">Квартална зарада умањена за нормиране трошкове</div>
+                    </div>
+                    <div class="value" data-value="freelancer1-tax-base"></div>
+                </div>
+                <div class="field">
+                    <div class="key">
+                        Порез на зараду:
+                        <div class="description"><span data-value="freelancer1-income-tax-percentage"></span> пореске основице</div>
+                    </div>
+                    <div class="value" data-value="freelancer1-income-tax"></div>
+                </div>
+                <div class="field">
+                    <div class="key">
+                        Пензијско и инвалидско осигурање:
+                        <div class="description"><span data-value="freelancer1-pension-percentage"></span> пореске основице</div>
+                    </div>
+                    <div class="value" data-value="freelancer1-pension"></div>
+                </div>
+                <div class="field">
+                    <div class="key">
+                        Здравствено осигурање:
+                        <div class="description"><span data-value="freelancer1-health-percentage"></span> пореске основице, не мање од минималног доприноса</div>
+                    </div>
+                    <div class="value" data-value="freelancer1-health"></div>
+                </div>
+                <div class="field mb-1">
+                    <div class="key">Укупни квартални порез:</div>
+                    <div class="value" data-value="freelancer1-quarterly-tax"></div>
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="key">Укупни месечни порез:</div>
+                <div class="value" data-value="freelancer1-monthly-tax"></div>
+            </div>
+
+            <div class="field">
+                <div class="key">Нето зарада месечно у динарима:</div>
+                <div class="value" data-value="freelancer1-neto"></div>
+            </div>
+
+            <div class="field">
+                <div class="key">Нето зарада месечно у страној валути:</div>
+                <div class="value bold" data-value="freelancer1-neto-foreign"></div>
+            </div>
+
+            <div class="field">
+                <div class="key">Годишња нето зарада у динарима:</div>
+                <div class="value" data-value="freelancer1-neto-yearly"></div>
+            </div>
+        </div>
+
+        <div class="variant freelancer2">
+            <div class="heading">
+                <h2>Фриленсер - опција 2</h2>
+            </div>
+
+            <div class="distribution">
+                <div class="values">
+                    <div data-value="freelancer2-neto-percentage"></div>
+                    <div data-value="freelancer2-tax-percentage"></div>
+                </div>
+                <div class="bar"><span></span></div>
+                <div class="labels">
+                    <div>нето</div>
+                    <div>порези и доприноси</div>
+                </div>
+            </div>
+
+            <div class="details">
+                <div class="field">
+                    <div class="key">Квартална зарада:</div>
+                    <div class="value" data-value="freelancer2-quarterly-earnings"></div>
+                </div>
+                <div class="field">
+                    <div class="key">
+                        Нормирани трошкови:
+                        <div class="description"><span data-value="freelancer2-standardized-costs-base"></span> увећано за 34% кварталне зараде</div>
+                    </div>
+                    <div class="value" data-value="freelancer2-standardized-costs"></div>
+                </div>
+                <div class="field mb-1">
+                    <div class="key">
+                        Пореска основица:
+                        <div class="description">Квартална зарада умањена за нормиране трошкове</div>
+                    </div>
+                    <div class="value" data-value="freelancer2-tax-base"></div>
+                </div>
+                <div class="field">
+                    <div class="key">
+                        Порез на зараду:
+                        <div class="description"><span data-value="freelancer2-income-tax-percentage"></span> пореске основице</div>
+                    </div>
+                    <div class="value" data-value="freelancer2-income-tax"></div>
+                </div>
+                <div class="field">
+                    <div class="key">
+                        Пензијско и инвалидско осигурање:
+                        <div class="description"><span data-value="freelancer2-pension-percentage"></span> пореске основице, где основица не може бити мања од троструког износа минималног доприноса</div>
+                    </div>
+                    <div class="value" data-value="freelancer2-pension"></div>
+                </div>
+                <div class="field">
+                    <div class="key">
+                        Здравствено осигурање:
+                        <div class="description"><span data-value="freelancer2-health-percentage"></span> пореске основице, не мање од минималног доприноса</div>
+                    </div>
+                    <div class="value" data-value="freelancer2-health"></div>
+                </div>
+                <div class="field mb-1">
+                    <div class="key">Укупни квартални порез:</div>
+                    <div class="value" data-value="freelancer2-quarterly-tax"></div>
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="key">Укупни месечни порез:</div>
+                <div class="value" data-value="freelancer2-monthly-tax"></div>
+            </div>
+
+            <div class="field">
+                <div class="key">Нето зарада месечно у динарима:</div>
+                <div class="value" data-value="freelancer2-neto"></div>
+            </div>
+
+            <div class="field">
+                <div class="key">Нето зарада месечно у страној валути:</div>
+                <div class="value bold" data-value="freelancer2-neto-foreign"></div>
+            </div>
+
+            <div class="field">
+                <div class="key">Годишња нето зарада у динарима:</div>
+                <div class="value" data-value="freelancer2-neto-yearly"></div>
+            </div>
+        </div>
+
+        <div class="variant lump-sum">
+            <div class="heading">
+                <h2>Предузетник паушалац</h2>
+            </div>
+
+            <div class="distribution">
+                <div class="values">
+                    <div data-value="lump-sum-neto-percentage"></div>
+                    <div data-value="lump-sum-tax-percentage"></div>
+                </div>
+                <div class="bar"><span></span></div>
+                <div class="labels">
+                    <div>нето</div>
+                    <div>порези и доприноси</div>
+                </div>
+            </div>
+
+            <div class="details">
+                <div class="field mb-1">
+                    <label for="lump-sum-tax">
+                        Паушални порез:
+                        <div class="description">
+                            <a href="https://eporezi.purs.gov.rs/kalkulator-pausalnog-poreza-i-doprinosa.html" target="_blank">Израчунајте вредност за своју делатност и место регистрације</a>
+                        </div>
+                    </label>
+                    <div class="amount amount--rsd highlighted">
+                        <input type="number" id="lump-sum-tax" name="lump_sum_tax" min="0" step="100" value="60000.00" required />
+                    </div>
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="key">Укупни месечни порез:</div>
+                <div class="value" data-value="lump-sum-monthly-tax"></div>
+            </div>
+
+            <div class="field">
+                <div class="key">Нето зарада месечно у динарима:</div>
+                <div class="value" data-value="lump-sum-neto"></div>
+            </div>
+
+            <div class="field">
+                <div class="key">Нето зарада месечно у страној валути:</div>
+                <div class="value bold" data-value="lump-sum-neto-foreign"></div>
+            </div>
+
+            <div class="field">
+                <div class="key">Годишња нето зарада у динарима:</div>
+                <div class="value" data-value="lump-sum-neto-yearly"></div>
+            </div>
+        </div>
+
+        <div class="variant entrepreneur">
+            <div class="heading">
+                <h2>Предузетник који исплаћује личну зараду</h2>
+            </div>
+
+            <div class="distribution">
+                <div class="values">
+                    <div data-value="entrepreneur-neto-percentage"></div>
+                    <div data-value="entrepreneur-tax-percentage"></div>
+                </div>
+                <div class="bar"><span></span></div>
+                <div class="labels">
+                    <div>нето</div>
+                    <div>порези и доприноси</div>
+                </div>
+            </div>
+
+            <div class="details">
+                <div class="field">
+                    <label for="entrepreneur-salary">
+                        Месечна бруто лична зарада:
+                        <div class="description">Не може бити мања од минималне основице за доприносе. Ово је износ на који се плаћају доприноси.</div>
+                    </label>
+                    <div class="amount amount--rsd highlighted">
+                        <input type="number" id="entrepreneur-salary" name="entrepreneur_salary" min="0" step="1000" value="40143.00" required />
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="entrepreneur-expenses">
+                        Месечни расход фирме:
+                        <div class="description">Трошкови књиговође, опреме за рад, закупа простора и слично</div>
+                    </label>
+                    <div class="amount amount--rsd highlighted">
+                        <input type="number" id="entrepreneur-expenses" name="entrepreneur_expenses" min="0" step="1000" value="10000.00" required />
+                    </div>
+                </div>
+                <div class="field mt-1">
+                    <div class="key">
+                        Порез на зараду:
+                        <div class="description"><span data-value="entrepreneur-income-tax-percentage"></span> бруто личне зараде умањене за неопорезиви износ зараде</div>
+                    </div>
+                    <div class="value" data-value="entrepreneur-income-tax"></div>
+                </div>
+                <div class="field">
+                    <div class="key">
+                        Пензијско и инвалидско осигурање:
+                        <div class="description"><span data-value="entrepreneur-pension-percentage"></span> бруто личне зараде</div>
+                    </div>
+                    <div class="value" data-value="entrepreneur-pension"></div>
+                </div>
+                <div class="field">
+                    <div class="key">
+                        Здравствено осигурање:
+                        <div class="description"><span data-value="entrepreneur-health-percentage"></span> бруто личне зараде</div>
+                    </div>
+                    <div class="value" data-value="entrepreneur-health"></div>
+                </div>
+                <div class="field">
+                    <div class="key">
+                        Допринос за незапосленост:
+                        <div class="description"><span data-value="entrepreneur-unemployment-percentage"></span> бруто личне зараде</div>
+                    </div>
+                    <div class="value" data-value="entrepreneur-unemployment"></div>
+                </div>
+                <div class="field">
+                    <div class="key">Месечна нето плата:</div>
+                    <div class="value" data-value="entrepreneur-salary-neto"></div>
+                </div>
+                <div class="field mt-1">
+                    <div class="key">
+                        Добит пре опорезивања:
+                        <div class="description">Бруто 2 зарада умањена за личну зарaду и месечни расход фирме</div>
+                    </div>
+                    <div class="value" data-value="entrepreneur-profit-before-tax"></div>
+                </div>
+                <div class="field mb-1">
+                    <div class="key">
+                        Порез на добит:
+                        <div class="description"><span data-value="entrepreneur-profit-tax-percentage"></span> добити пре опорезивања</div>
+                    </div>
+                    <div class="value" data-value="entrepreneur-profit-tax"></div>
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="key">Укупни месечни порез:</div>
+                <div class="value" data-value="entrepreneur-monthly-tax"></div>
+            </div>
+
+            <div class="field">
+                <div class="key">Нето зарада месечно у динарима:</div>
+                <div class="value" data-value="entrepreneur-neto"></div>
+            </div>
+
+            <div class="field">
+                <div class="key">Нето зарада месечно у страној валути:</div>
+                <div class="value bold" data-value="entrepreneur-neto-foreign"></div>
+            </div>
+
+            <div class="field">
+                <div class="key">Годишња нето зарада у динарима:</div>
+                <div class="value" data-value="entrepreneur-neto-yearly"></div>
+            </div>
+        </div>
+
+        <div class="variant employee">
+            <div class="heading">
+                <h2>Регуларно запослење</h2>
+            </div>
+
+            <div class="distribution">
+                <div class="values">
+                    <div data-value="employee-neto-percentage"></div>
+                    <div data-value="employee-tax-percentage"></div>
+                </div>
+                <div class="bar"><span></span></div>
+                <div class="labels">
+                    <div>нето</div>
+                    <div>порези и доприноси</div>
+                </div>
+            </div>
+
+            <div class="details">
+                <div class="field">
+                    <div class="key">Бруто 2:</div>
+                    <div class="value" data-value="employee-bruto2"></div>
+                </div>
+                <div class="field">
+                    <div class="key">
+                        Пензијско и инвалидско осигурање:
+                        <div class="description">На терет послодавца. <span data-value="employee-pension-employer-percentage"></span> бруто 2 зараде</div>
+                    </div>
+                    <div class="value" data-value="employee-pension-employer"></div>
+                </div>
+                <div class="field">
+                    <div class="key">
+                        Здравствено осигурање:
+                        <div class="description">На терет послодавца. <span data-value="employee-health-employer-percentage"></span> бруто 2 зараде</div>
+                    </div>
+                    <div class="value" data-value="employee-health-employer"></div>
+                </div>
+                <div class="field mt-1">
+                    <div class="key">
+                        Бруто 1:
+                        <div class="description">Зарада након одбитка пореза на терет послодавца</div>
+                    </div>
+                    <div class="value" data-value="employee-bruto1"></div>
+                </div>
+                <div class="field">
+                    <div class="key">
+                        Основица за обрачун доприноса:
+                        <div class="description">Бруто 1 износ, који не може бити већи од максималне а мањи од минималне основице за доприносе.</div>
+                    </div>
+                    <div class="value" data-value="employee-contribution-base"></div>
+                </div>
+                <div class="field">
+                    <div class="key">
+                        Порез на зараду:
+                        <div class="description"><span data-value="employee-income-tax-percentage"></span> oд бруто 1 износа умањеног за неопорезиви износ зараде</div>
+                    </div>
+                    <div class="value" data-value="employee-income-tax"></div>
+                </div>
+                <div class="field">
+                    <div class="key">
+                        Пензијско и инвалидско осигурање:
+                        <div class="description">На терет запосленог. <span data-value="employee-pension-percentage"></span> основице за обрачун доприноса</div>
+                    </div>
+                    <div class="value" data-value="employee-pension"></div>
+                </div>
+                <div class="field">
+                    <div class="key">
+                        Здравствено осигурање:
+                        <div class="description">На терет запосленог. <span data-value="employee-health-percentage"></span> основице за обрачун доприноса</div>
+                    </div>
+                    <div class="value" data-value="employee-health"></div>
+                </div>
+                <div class="field mb-1">
+                    <div class="key">
+                        Допринос за незапосленост:
+                        <div class="description"><span data-value="employee-unemployment-percentage"></span> основице за обрачун доприноса</div>
+                    </div>
+                    <div class="value" data-value="employee-unemployment"></div>
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="key">Укупни месечни порез:</div>
+                <div class="value" data-value="employee-monthly-tax"></div>
+            </div>
+
+            <div class="field">
+                <div class="key">Нето зарада месечно у динарима:</div>
+                <div class="value" data-value="employee-neto"></div>
+            </div>
+
+            <div class="field">
+                <div class="key">Нето зарада месечно у страној валути:</div>
+                <div class="value bold" data-value="employee-neto-foreign"></div>
+            </div>
+
+            <div class="field">
+                <div class="key">Годишња нето зарада у динарима:</div>
+                <div class="value" data-value="employee-neto-yearly"></div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script src="calculator.js"></script>
+</body>
+</html>
