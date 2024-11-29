@@ -281,6 +281,98 @@ function updateEmployee() {
 
 }
 
+function updateLlc() {
+    const minContributionBase = parseFloat(document.getElementById('contribution-base-min').value);
+    const maxContributionBase = parseFloat(document.getElementById('contribution-base-max').value);
+    const minMonthlySalary = parseFloat(document.getElementById('llc-minimal-neto-salary').value);
+    const untaxableIncome = parseFloat(document.getElementById('untaxable-income').value);
+    const desiredMonthlyNetoForeign = parseFloat(document.getElementById('llc-desired-monthly-neto-foreign').value);
+
+    let desiredMonthlyNeto = minMonthlySalary;
+
+    if (desiredMonthlyNetoForeign > 0) {
+        desiredMonthlyNeto = desiredMonthlyNetoForeign * exchangeRate;
+    }
+    
+    let monthlyContributionBase = (desiredMonthlyNeto - untaxableIncome * taxes.employee.income) /
+            (1 - taxes.employee.income - taxes.employee.health - taxes.employee.pension - taxes.employee.unemployment);
+
+    if (monthlyContributionBase > maxContributionBase) {
+        monthlyContributionBase = maxContributionBase;
+    }
+
+    if (monthlyContributionBase < minContributionBase) {
+        monthlyContributionBase = minContributionBase;
+    }
+
+    const monthlyPensionEmployer = monthlyContributionBase * taxes.employee.pensionEmployer;
+    const monthlyHealthEmployer = monthlyContributionBase * taxes.employee.healthEmployer;
+    
+    const monthlyIncomeTax = (monthlyContributionBase - untaxableIncome) * taxes.employee.income;
+    const monthlyPension = monthlyContributionBase * taxes.employee.pension;
+    const monthlyHealth = monthlyContributionBase * taxes.employee.health;
+    const monthlyUnemployment = monthlyContributionBase * taxes.employee.unemployment;
+
+    const monthlyTax = monthlyPensionEmployer + monthlyHealthEmployer + monthlyIncomeTax + monthlyPension + monthlyHealth + monthlyUnemployment;
+    const monthlyBruto2 = desiredMonthlyNeto + monthlyTax;
+    const monthlyNetoForeign = desiredMonthlyNeto / exchangeRate;
+
+    const yearlySalaryWithBonusBruto2 = bruto2 * 12 - 11 * monthlyBruto2;
+
+    let yearlySalaryWithBonusContributionBase = yearlySalaryWithBonusBruto2 / (1 + taxes.employee.healthEmployer + taxes.employee.pensionEmployer);
+
+    if (yearlySalaryWithBonusContributionBase > maxContributionBase) {
+        yearlySalaryWithBonusContributionBase = maxContributionBase;
+    }
+
+    const yearlySalaryWithBonusPensionEmployer = yearlySalaryWithBonusContributionBase * taxes.employee.pensionEmployer;
+    const yearlySalaryWithBonusHealthEmployer = yearlySalaryWithBonusContributionBase * taxes.employee.healthEmployer;
+
+    const yearlySalaryWithBonusBruto1 = yearlySalaryWithBonusBruto2 - yearlySalaryWithBonusPensionEmployer - yearlySalaryWithBonusHealthEmployer;
+    const yearlySalaryWithBonusIncomeTax = (yearlySalaryWithBonusBruto1 - untaxableIncome) * taxes.employee.income;
+    const yearlySalaryWithBonusPension = yearlySalaryWithBonusContributionBase * taxes.employee.pension;
+    const yearlySalaryWithBonusHealth = yearlySalaryWithBonusContributionBase * taxes.employee.health;
+    const yearlySalaryWithBonusUnemployment = yearlySalaryWithBonusContributionBase * taxes.employee.unemployment;
+
+    const yearlySalaryWithBonusTax = yearlySalaryWithBonusPensionEmployer + yearlySalaryWithBonusHealthEmployer +
+            yearlySalaryWithBonusIncomeTax + yearlySalaryWithBonusPension + yearlySalaryWithBonusHealth + yearlySalaryWithBonusUnemployment;
+
+    const yearlySalaryWithBonusNeto = yearlySalaryWithBonusBruto2 - yearlySalaryWithBonusTax;
+    const yearlySalaryWithBonusNetoForeign = yearlySalaryWithBonusNeto / exchangeRate;
+
+    const totalTax = monthlyTax * 11 + yearlySalaryWithBonusTax;
+    const yearlyNeto = bruto2 * 12 - totalTax;
+    const yearlyNetoForeign = yearlyNeto / exchangeRate;
+    const taxPercentage = totalTax / (bruto2 * 12);
+    const netoPercentage = 1 - taxPercentage;
+
+    document.querySelector('[data-value=llc-tax-percentage]').innerText = formatPercentage(taxPercentage);
+    document.querySelector('[data-value=llc-neto-percentage]').innerText = formatPercentage(netoPercentage);
+
+    document.querySelector('[data-value=llc-monthly-bruto2]').innerText = formatAmount(monthlyBruto2);
+    document.querySelector('[data-value=llc-monthly-pension]').innerText = formatAmount(monthlyPension + monthlyPensionEmployer);
+    document.querySelector('[data-value=llc-monthly-health]').innerText = formatAmount(monthlyHealth + monthlyHealthEmployer);
+    document.querySelector('[data-value=llc-monthly-income-tax]').innerText = formatAmount(monthlyIncomeTax);
+    document.querySelector('[data-value=llc-monthly-unemployment]').innerText = formatAmount(monthlyUnemployment);
+    document.querySelector('[data-value=llc-monthly-tax]').innerText = formatAmount(monthlyTax);
+    document.querySelector('[data-value=llc-monthly-neto]').innerText = formatAmount(desiredMonthlyNeto);
+    document.querySelector('[data-value=llc-monthly-neto-foreign]').innerText = formatAmount(monthlyNetoForeign);
+
+    document.querySelector('[data-value=llc-bonus-bruto2]').innerText = formatAmount(yearlySalaryWithBonusBruto2);
+    document.querySelector('[data-value=llc-bonus-pension]').innerText = formatAmount(yearlySalaryWithBonusPension);
+    document.querySelector('[data-value=llc-bonus-health]').innerText = formatAmount(yearlySalaryWithBonusHealth);
+    document.querySelector('[data-value=llc-bonus-income-tax]').innerText = formatAmount(yearlySalaryWithBonusIncomeTax);
+    document.querySelector('[data-value=llc-bonus-unemployment]').innerText = formatAmount(yearlySalaryWithBonusUnemployment);
+    document.querySelector('[data-value=llc-bonus-tax]').innerText = formatAmount(yearlySalaryWithBonusTax);
+    document.querySelector('[data-value=llc-bonus-neto]').innerText = formatAmount(yearlySalaryWithBonusNeto);
+    document.querySelector('[data-value=llc-bonus-neto-foreign]').innerText = formatAmount(yearlySalaryWithBonusNetoForeign);
+
+    document.querySelector('.llc .bar span').style.width = `${netoPercentage * 100}%`;
+    document.querySelector('[data-value=llc-tax-yearly]').innerText = formatAmount(totalTax);
+    document.querySelector('[data-value=llc-neto-yearly]').innerText = formatAmount(yearlyNeto);
+    document.querySelector('[data-value=llc-neto-yearly-foreign]').innerText = formatAmount(yearlyNetoForeign);
+}
+
 function updateLabels() {
     document.querySelector('[data-value=freelancer1-income-tax-percentage]').innerText = formatPercentage(taxes.freelancer1.income);
     document.querySelector('[data-value=freelancer1-pension-percentage]').innerText = formatPercentage(taxes.freelancer1.pension);
@@ -320,6 +412,7 @@ function updateValues() {
     updateLumpSum();
     updateEntrepreneur();
     updateEmployee();
+    updateLlc();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -342,6 +435,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.settings input').forEach((element) => {
         element.addEventListener('input', updateValues);
         element.addEventListener('input', updateLabels);
+    });
+
+    document.querySelectorAll('.llc input').forEach((element) => {
+        element.addEventListener('input', updateLlc);
     });
 
     lumpSumTaxField.addEventListener('input', updateLumpSum);

@@ -122,6 +122,16 @@
                         <input type="number" inputmode="numeric" class="currency currency--rsd" id="freelancer2-standardized-costs" name="freelancer2_standardized_costs" min="0" value="62300.00" required />
                     </div>
                 </div>
+
+                <div class="field">
+                    <label for="llc-minimal-neto-salary">
+                        Просечна минимална месечна нето зарада:
+                        <div class="description"><a href="https://www.paragraf.rs/statistika/minimalna_zarada.html" target="_blank">Проверите актуелне вредности</a></div>
+                    </label>
+                    <div class="amount amount--rsd">
+                        <input type="number" inputmode="numeric" class="currency currency--rsd" id="llc-minimal-neto-salary" name="llc_minimal_neto_salary" min="0" value="46612.00" required />
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -550,6 +560,131 @@
             <div class="field">
                 <div class="key">Годишња нето зарада у динарима:</div>
                 <div class="value" data-value="employee-neto-yearly"></div>
+            </div>
+        </div>
+        <div class="variant llc">
+            <div class="heading">
+                <h2>ДОО са исплатом годишњег бонуса</h2>
+            </div>
+
+            <div class="distribution">
+                <div class="values">
+                    <div data-value="llc-neto-percentage"></div>
+                    <div data-value="llc-tax-percentage"></div>
+                </div>
+                <div class="bar"><span></span></div>
+                <div class="labels">
+                    <div>нето</div>
+                    <div>порези и доприноси</div>
+                </div>
+            </div>
+            <div class="details mb-1">
+                <div class="field">
+                    <label for="llc-desired-monthly-neto-foreign">
+                        <strong>Жељена месечна нето зарада у страној валути:</strong>
+                    </label>
+                    <div class="amount highlighted">
+                        <input type="number" inputmode="numeric" id="llc-desired-monthly-neto-foreign" name="llc_desired_monthly_neto_foreign" min="100" step="100" autofocus autocomplete="off" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="details">
+                <div class="field">
+                    <div class="key">Месечно:</div>
+                    <div class="value" data-value="llc-monthly-bruto2"></div>
+                </div>
+                <div class="field">
+                    <div class="key">
+                        Пензијско и инвалидско осигурање:
+                    </div>
+                    <div class="value" data-value="llc-monthly-pension"></div>
+                </div>
+                <div class="field">
+                    <div class="key">
+                        Здравствено осигурање:
+                    </div>
+                    <div class="value" data-value="llc-monthly-health"></div>
+                </div>
+                <div class="field">
+                    <div class="key">
+                        Порез на зараду:
+                    </div>
+                    <div class="value" data-value="llc-monthly-income-tax"></div>
+                </div>
+                <div class="field">
+                    <div class="key">
+                        Допринос за незапосленост:
+                    </div>
+                    <div class="value" data-value="llc-monthly-unemployment"></div>
+                </div>
+                <div class="field">
+                    <div class="key">Укупно порез:</div>
+                    <div class="value" data-value="llc-monthly-tax"></div>
+                </div>
+                <div class="field">
+                    <div class="key">Нето зарада у динарима:</div>
+                    <div class="value" data-value="llc-monthly-neto"></div>
+                </div>
+                <div class="field">
+                    <div class="key">Нето зарада у страној валути:</div>
+                    <div class="value bold" data-value="llc-monthly-neto-foreign"></div>
+                </div>
+            </div>
+            <div class="details mt-1">
+                <div class="field">
+                    <div class="key">Плата са бонусом:</div>
+                    <div class="value" data-value="llc-bonus-bruto2"></div>
+                </div>
+                <div class="field">
+                    <div class="key">
+                        Пензијско и инвалидско осигурање:
+                    </div>
+                    <div class="value" data-value="llc-bonus-pension"></div>
+                </div>
+                <div class="field">
+                    <div class="key">
+                        Здравствено осигурање:
+                    </div>
+                    <div class="value" data-value="llc-bonus-health"></div>
+                </div>
+                <div class="field">
+                    <div class="key">
+                        Порез на зараду:
+                    </div>
+                    <div class="value" data-value="llc-bonus-income-tax"></div>
+                </div>
+                <div class="field">
+                    <div class="key">
+                        Допринос за незапосленост:
+                    </div>
+                    <div class="value" data-value="llc-bonus-unemployment"></div>
+                </div>
+                <div class="field">
+                    <div class="key">Укупно порез:</div>
+                    <div class="value" data-value="llc-bonus-tax"></div>
+                </div>
+                <div class="field">
+                    <div class="key">Нето зарада у динарима:</div>
+                    <div class="value" data-value="llc-bonus-neto"></div>
+                </div>
+                <div class="field mb-1">
+                    <div class="key">Нето зарада у страној валути:</div>
+                    <div class="value bold" data-value="llc-bonus-neto-foreign"></div>
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="key">Укупни годишњи порез:</div>
+                <div class="value" data-value="llc-tax-yearly"></div>
+            </div>
+            <div class="field">
+                <div class="key">Годишња нето зарада у динарима:</div>
+                <div class="value" data-value="llc-neto-yearly"></div>
+            </div>
+            <div class="field">
+                <div class="key">Годишња нето зарада у страној валути:</div>
+                <div class="value bold" data-value="llc-neto-yearly-foreign"></div>
             </div>
         </div>
     </section>
