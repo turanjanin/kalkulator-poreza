@@ -580,18 +580,21 @@
             </div>
             <div class="details mb-1">
                 <div class="field">
-                    <label for="llc-desired-monthly-neto-foreign">
-                        <strong>Жељена месечна нето зарада у страној валути:</strong>
+                    <label for="llc-desired-monthly-neto">
+                        <strong>Жељена месечна нето зарада:</strong>
                     </label>
-                    <div class="amount highlighted">
-                        <input type="number" inputmode="numeric" id="llc-desired-monthly-neto-foreign" name="llc_desired_monthly_neto_foreign" min="100" step="100" autofocus autocomplete="off" />
+                    <div class="amount amount--rsd highlighted">
+                        <input type="number" inputmode="numeric" id="llc-desired-monthly-neto" name="llc_desired_monthly_neto" min="100" step="100" autofocus autocomplete="off" />
                     </div>
                 </div>
             </div>
 
             <div class="details">
                 <div class="field">
-                    <div class="key">Месечно:</div>
+                    <div class="key">
+                        Месечно:
+                        <div class="description">Укупан месечни трошак зараде који ће се у току године јављати 11 пута.</div>
+                    </div>
                     <div class="value" data-value="llc-monthly-bruto2"></div>
                 </div>
                 <div class="field">
@@ -633,7 +636,10 @@
             </div>
             <div class="details mt-1">
                 <div class="field">
-                    <div class="key">Плата са бонусом:</div>
+                    <div class="key">
+                        Плата са бонусом:
+                        <div class="description">Укупан трошак зараде са бонусом који се исплаћује једном годишње.</div>
+                    </div>
                     <div class="value" data-value="llc-bonus-bruto2"></div>
                 </div>
                 <div class="field">

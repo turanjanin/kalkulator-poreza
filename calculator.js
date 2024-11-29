@@ -286,12 +286,10 @@ function updateLlc() {
     const maxContributionBase = parseFloat(document.getElementById('contribution-base-max').value);
     const minMonthlySalary = parseFloat(document.getElementById('llc-minimal-neto-salary').value);
     const untaxableIncome = parseFloat(document.getElementById('untaxable-income').value);
-    const desiredMonthlyNetoForeign = parseFloat(document.getElementById('llc-desired-monthly-neto-foreign').value);
+    let desiredMonthlyNeto = parseFloat(document.getElementById('llc-desired-monthly-neto').value);
 
-    let desiredMonthlyNeto = minMonthlySalary;
-
-    if (desiredMonthlyNetoForeign > 0) {
-        desiredMonthlyNeto = desiredMonthlyNetoForeign * exchangeRate;
+    if (desiredMonthlyNeto < minMonthlySalary) {
+        desiredMonthlyNeto = minMonthlySalary;
     }
     
     let monthlyContributionBase = (desiredMonthlyNeto - untaxableIncome * taxes.employee.income) /
@@ -426,6 +424,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    document.getElementById('llc-desired-monthly-neto').value = document.getElementById('llc-minimal-neto-salary').value;
+
     updateLabels();
     updateValues();
 
@@ -435,6 +435,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.settings input').forEach((element) => {
         element.addEventListener('input', updateValues);
         element.addEventListener('input', updateLabels);
+    });
+
+    document.getElementById('llc-minimal-neto-salary').addEventListener('input', () => {
+        document.getElementById('llc-desired-monthly-neto').value = document.getElementById('llc-minimal-neto-salary').value;
     });
 
     document.querySelectorAll('.llc input').forEach((element) => {
