@@ -315,6 +315,7 @@ function updateLlc() {
     const monthlyBruto2 = desiredMonthlyNeto + monthlyTax;
     const monthlyNetoForeign = desiredMonthlyNeto / exchangeRate;
 
+    const profit = (bruto2 - monthlyBruto2) * 12;
     const yearlySalaryWithBonusBruto2 = bruto2 * 12 - 11 * monthlyBruto2;
 
     let yearlySalaryWithBonusContributionBase = yearlySalaryWithBonusBruto2 / (1 + taxes.employee.healthEmployer + taxes.employee.pensionEmployer);
@@ -356,6 +357,8 @@ function updateLlc() {
     document.querySelector('[data-value=llc-monthly-neto]').innerText = formatAmount(desiredMonthlyNeto);
     document.querySelector('[data-value=llc-monthly-neto-foreign]').innerText = formatAmount(monthlyNetoForeign);
 
+    document.querySelector('[data-value=llc-profit]').innerText = formatAmount(profit);
+
     document.querySelector('[data-value=llc-bonus-bruto2]').innerText = formatAmount(yearlySalaryWithBonusBruto2);
     document.querySelector('[data-value=llc-bonus-pension]').innerText = formatAmount(yearlySalaryWithBonusPension);
     document.querySelector('[data-value=llc-bonus-health]').innerText = formatAmount(yearlySalaryWithBonusHealth);
@@ -366,9 +369,10 @@ function updateLlc() {
     document.querySelector('[data-value=llc-bonus-neto-foreign]').innerText = formatAmount(yearlySalaryWithBonusNetoForeign);
 
     document.querySelector('.llc .bar span').style.width = `${netoPercentage * 100}%`;
-    document.querySelector('[data-value=llc-tax-yearly]').innerText = formatAmount(totalTax);
+    document.querySelector('[data-value=llc-average-monthly-tax]').innerText = formatAmount(totalTax / 12);
+    document.querySelector('[data-value=llc-average-neto-monthly]').innerText = formatAmount(yearlyNeto / 12);
+    document.querySelector('[data-value=llc-average-neto-monthly-foreign]').innerText = formatAmount(yearlyNetoForeign / 12);
     document.querySelector('[data-value=llc-neto-yearly]').innerText = formatAmount(yearlyNeto);
-    document.querySelector('[data-value=llc-neto-yearly-foreign]').innerText = formatAmount(yearlyNetoForeign);
 }
 
 function updateLabels() {

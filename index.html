@@ -581,7 +581,7 @@
             <div class="details mb-1">
                 <div class="field">
                     <label for="llc-desired-monthly-neto">
-                        <strong>Жељена месечна нето зарада:</strong>
+                        <strong>Mесечна нето зарада:</strong>
                     </label>
                     <div class="amount amount--rsd highlighted">
                         <input type="number" inputmode="numeric" id="llc-desired-monthly-neto" name="llc_desired_monthly_neto" min="100" step="100" autofocus autocomplete="off" />
@@ -592,20 +592,21 @@
             <div class="details">
                 <div class="field">
                     <div class="key">
-                        Месечно:
-                        <div class="description">Укупан месечни трошак зараде који ће се у току године јављати 11 пута.</div>
+                        Бруто 2:
                     </div>
                     <div class="value" data-value="llc-monthly-bruto2"></div>
                 </div>
                 <div class="field">
                     <div class="key">
                         Пензијско и инвалидско осигурање:
+                        <div class="description">На терет запосленог и послодавца</div>
                     </div>
                     <div class="value" data-value="llc-monthly-pension"></div>
                 </div>
                 <div class="field">
                     <div class="key">
                         Здравствено осигурање:
+                        <div class="description">На терет запосленог и послодавца</div>
                     </div>
                     <div class="value" data-value="llc-monthly-health"></div>
                 </div>
@@ -622,11 +623,11 @@
                     <div class="value" data-value="llc-monthly-unemployment"></div>
                 </div>
                 <div class="field">
-                    <div class="key">Укупно порез:</div>
+                    <div class="key">Укупни месечни порез:</div>
                     <div class="value" data-value="llc-monthly-tax"></div>
                 </div>
                 <div class="field">
-                    <div class="key">Нето зарада у динарима:</div>
+                    <div class="key">Нето зарада месечно у динарима:</div>
                     <div class="value" data-value="llc-monthly-neto"></div>
                 </div>
                 <div class="field">
@@ -637,20 +638,31 @@
             <div class="details mt-1">
                 <div class="field">
                     <div class="key">
-                        Плата са бонусом:
-                        <div class="description">Укупан трошак зараде са бонусом који се исплаћује једном годишње.</div>
+                        Профит након исплате плата:
+                        <div class="description">Уједно и висина бонуса која ће се придодати 12. плати.</div>
+                    </div>
+                    <div class="value" data-value="llc-profit"></div>
+                </div>
+            </div>
+
+            <div class="details mt-1">
+                <div class="field">
+                    <div class="key">
+                        Бруто 2 за плату са бонусом:
                     </div>
                     <div class="value" data-value="llc-bonus-bruto2"></div>
                 </div>
                 <div class="field">
                     <div class="key">
                         Пензијско и инвалидско осигурање:
+                        <div class="description">На терет запосленог и послодавца</div>
                     </div>
                     <div class="value" data-value="llc-bonus-pension"></div>
                 </div>
                 <div class="field">
                     <div class="key">
                         Здравствено осигурање:
+                        <div class="description">На терет запосленог и послодавца</div>
                     </div>
                     <div class="value" data-value="llc-bonus-health"></div>
                 </div>
@@ -667,7 +679,7 @@
                     <div class="value" data-value="llc-bonus-unemployment"></div>
                 </div>
                 <div class="field">
-                    <div class="key">Укупно порез:</div>
+                    <div class="key">Укупни порез на плату са бонусом:</div>
                     <div class="value" data-value="llc-bonus-tax"></div>
                 </div>
                 <div class="field">
@@ -681,16 +693,20 @@
             </div>
 
             <div class="field">
-                <div class="key">Укупни годишњи порез:</div>
-                <div class="value" data-value="llc-tax-yearly"></div>
+                <div class="key">Просечни месечни порез:</div>
+                <div class="value" data-value="llc-average-monthly-tax"></div>
+            </div>
+            <div class="field">
+                <div class="key">Просечна нето зарада месечно у динарима:</div>
+                <div class="value bold" data-value="llc-average-neto-monthly"></div>
+            </div>
+            <div class="field">
+                <div class="key">Просечна нето зарада месечно у страној валути:</div>
+                <div class="value bold" data-value="llc-average-neto-monthly-foreign"></div>
             </div>
             <div class="field">
                 <div class="key">Годишња нето зарада у динарима:</div>
                 <div class="value" data-value="llc-neto-yearly"></div>
-            </div>
-            <div class="field">
-                <div class="key">Годишња нето зарада у страној валути:</div>
-                <div class="value bold" data-value="llc-neto-yearly-foreign"></div>
             </div>
         </div>
     </section>
