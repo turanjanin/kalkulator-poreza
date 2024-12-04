@@ -6,11 +6,13 @@ Simple online calculator that, given the bruto 2 amount, calculates salary after
 - Entrepreneur with lump-sum tax (предузетник паушалац)
 - Entrepreneur with personal income (предузетник који исплаћује личну зараду)
 - Regular employment (регуларно запослен)
+- Single-employee LLC with yearly bonus (ДОО са исплатом годишњег бонуса)
 
 
-## Author
+## Authors
 
 - [Jovan Turanjanin](https://github.com/turanjanin)
+- [All Contributors](../../contributors)
 
 
 ## License
