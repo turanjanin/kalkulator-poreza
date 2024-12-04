@@ -1,8 +1,11 @@
 const exchangeRateField = document.getElementById('exchange-rate');
 const bruto2ForeignField = document.getElementById('bruto2-foreign');
+const contributionBaseMinField = document.getElementById('contribution-base-min');
+const minimalNetoSalaryField = document.getElementById('llc-minimal-neto-salary');
 const lumpSumTaxField = document.getElementById('lump-sum-tax');
 const entrepreneurSalaryField = document.getElementById('entrepreneur-salary');
 const entrepreneurExpensesField = document.getElementById('entrepreneur-expenses');
+const llcSalaryField = document.getElementById('llc-desired-monthly-neto');
 
 let exchangeRate;
 let bruto2Foreign;
@@ -115,7 +118,7 @@ function updateFreelancer2() {
     const quarterlyEarnings = bruto2 * 3;
     const standardizedCosts = parseFloat(document.getElementById('freelancer2-standardized-costs').value) + quarterlyEarnings * 0.34;
     const minimalHealthContribution = parseFloat(document.getElementById('freelancer-minimal-health').value);
-    const contributionBaseMin = parseFloat(document.getElementById('contribution-base-min').value);
+    const contributionBaseMin = parseFloat(contributionBaseMinField.value);
 
     let taxBase = quarterlyEarnings - standardizedCosts;
     if (taxBase < 0) {
@@ -194,7 +197,13 @@ function updateLumpSum() {
 }
 
 function updateEntrepreneur() {
-    const salary = parseFloat(document.getElementById('entrepreneur-salary').value);
+    let salary = parseFloat(document.getElementById('entrepreneur-salary').value);
+    const minSalary = parseFloat(contributionBaseMinField.value);
+
+    if (salary < minSalary) {
+        salary = minSalary;
+    }
+
     const expenses = parseFloat(document.getElementById('entrepreneur-expenses').value);
     const untaxableIncome = parseFloat(document.getElementById('untaxable-income').value);
 
@@ -232,7 +241,7 @@ function updateEntrepreneur() {
 }
 
 function updateEmployee() {
-    const minContributionBase = parseFloat(document.getElementById('contribution-base-min').value);
+    const minContributionBase = parseFloat(contributionBaseMinField.value);
     const maxContributionBase = parseFloat(document.getElementById('contribution-base-max').value);
     const untaxableIncome = parseFloat(document.getElementById('untaxable-income').value);
 
@@ -282,7 +291,7 @@ function updateEmployee() {
 }
 
 function updateLlc() {
-    const minContributionBase = parseFloat(document.getElementById('contribution-base-min').value);
+    const minContributionBase = parseFloat(contributionBaseMinField.value);
     const maxContributionBase = parseFloat(document.getElementById('contribution-base-max').value);
     const minMonthlySalary = parseFloat(document.getElementById('llc-minimal-neto-salary').value);
     const untaxableIncome = parseFloat(document.getElementById('untaxable-income').value);
@@ -428,10 +437,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    document.getElementById('llc-desired-monthly-neto').value = document.getElementById('llc-minimal-neto-salary').value;
+    entrepreneurSalaryField.value = contributionBaseMinField.value;
+    entrepreneurSalaryField.setAttribute('min', contributionBaseMinField.value);
+    contributionBaseMinField.addEventListener('input', () => {
+        entrepreneurSalaryField.setAttribute('min', contributionBaseMinField.value);
+    });
 
-    updateLabels();
-    updateValues();
+    llcSalaryField.value = minimalNetoSalaryField.value;
+    llcSalaryField.setAttribute('min', minimalNetoSalaryField.value);
+    minimalNetoSalaryField.addEventListener('input', () => {
+        llcSalaryField.setAttribute('min', minimalNetoSalaryField.value);
+    });
 
     exchangeRateField.addEventListener('input', updateValues);
     bruto2ForeignField.addEventListener('input', updateValues);
@@ -441,18 +457,13 @@ document.addEventListener('DOMContentLoaded', () => {
         element.addEventListener('input', updateLabels);
     });
 
-    document.getElementById('llc-minimal-neto-salary').addEventListener('input', () => {
-        document.getElementById('llc-desired-monthly-neto').value = document.getElementById('llc-minimal-neto-salary').value;
-    });
-
-    document.querySelectorAll('.llc input').forEach((element) => {
-        element.addEventListener('input', updateLlc);
-    });
-
     lumpSumTaxField.addEventListener('input', updateLumpSum);
-
     entrepreneurSalaryField.addEventListener('input', updateEntrepreneur);
     entrepreneurExpensesField.addEventListener('input', updateEntrepreneur);
+    llcSalaryField.addEventListener('input', updateLlc);
+
+    updateLabels();
+    updateValues();
 
     document.querySelectorAll('.section .heading').forEach((element) => {
         element.addEventListener('click', (event) => {
