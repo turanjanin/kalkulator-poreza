@@ -66,6 +66,26 @@
                     </div>
                 </div>
 
+                <div class="field">
+                    <label for="llc-minimal-neto-salary">
+                        Просечна минимална месечна нето зарада:
+                        <div class="description"><a href="https://www.paragraf.rs/statistika/minimalna_zarada.html" target="_blank">Проверите актуелне вредности</a></div>
+                    </label>
+                    <div class="amount amount--rsd">
+                        <input type="number" inputmode="numeric" class="currency currency--rsd" id="llc-minimal-neto-salary" name="llc_minimal_neto_salary" min="0" value="46612.00" required />
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="average-yearly-bruto-salary">
+                        Просечна годишња зарада:
+                        <div class="description"><a href="https://www.paragraf.rs/statistika/godisnji-porez-na-dohodak-gradjana.html" target="_blank">Проверите актуелне вредности</a></div>
+                    </label>
+                    <div class="amount amount--rsd">
+                        <input type="number" inputmode="numeric" class="currency currency--rsd" id="average-yearly-bruto-salary" name="average_yearly_bruto_salary" min="0" value="1423188.00" required />
+                    </div>
+                </div>
+
 <!--                <div class="field">-->
 <!--                    <label for="eco-tax">Еко такса:</label>-->
 <!--                    <div class="amount amount&#45;&#45;rsd">-->
@@ -73,7 +93,7 @@
 <!--                    </div>-->
 <!--                </div>-->
 
-                <div class="field">
+                <div class="field mt-1">
                     <label for="contribution-base-min">
                         Минимална основица за доприносе:
                         <div class="description"><a href="https://www.pio.rs/osnovice-za-uplatu-doprinosa" target="_blank">Проверите актуелне вредности</a></div>
@@ -93,7 +113,7 @@
                     </div>
                 </div>
 
-                <div class="field">
+                <div class="field mt-1">
                     <label for="freelancer-minimal-health">
                         Фриленсер, минимални допринос за здравство:
                         <div class="description"><a href="https://frilenseri.purs.gov.rs/najcesca-pitanja.html?t=&tid=28598&ot=#searchContainer" target="_blank">Проверите актуелне вредности</a></div>
@@ -120,16 +140,6 @@
                     </label>
                     <div class="amount amount--rsd">
                         <input type="number" inputmode="numeric" class="currency currency--rsd" id="freelancer2-standardized-costs" name="freelancer2_standardized_costs" min="0" value="62300.00" required />
-                    </div>
-                </div>
-
-                <div class="field">
-                    <label for="llc-minimal-neto-salary">
-                        Просечна минимална месечна нето зарада:
-                        <div class="description"><a href="https://www.paragraf.rs/statistika/minimalna_zarada.html" target="_blank">Проверите актуелне вредности</a></div>
-                    </label>
-                    <div class="amount amount--rsd">
-                        <input type="number" inputmode="numeric" class="currency currency--rsd" id="llc-minimal-neto-salary" name="llc_minimal_neto_salary" min="0" value="46612.00" required />
                     </div>
                 </div>
             </div>
@@ -219,6 +229,16 @@
                 <div class="key">Годишња нето зарада у динарима:</div>
                 <div class="value" data-value="freelancer1-neto-yearly"></div>
             </div>
+
+            <div class="field mt-1">
+                <div class="key">Годишњи порез за млађе од 40 година:</div>
+                <div class="value" data-value="freelancer1-yearly-tax-under-40"></div>
+            </div>
+
+            <div class="field">
+                <div class="key">Годишњи порез за старије од 40 година:</div>
+                <div class="value" data-value="freelancer1-yearly-tax-over-40"></div>
+            </div>
         </div>
 
         <div class="variant freelancer2">
@@ -303,6 +323,16 @@
                 <div class="key">Годишња нето зарада у динарима:</div>
                 <div class="value" data-value="freelancer2-neto-yearly"></div>
             </div>
+
+            <div class="field mt-1">
+                <div class="key">Годишњи порез за млађе од 40 година:</div>
+                <div class="value" data-value="freelancer2-yearly-tax-under-40"></div>
+            </div>
+
+            <div class="field">
+                <div class="key">Годишњи порез за старије од 40 година:</div>
+                <div class="value" data-value="freelancer2-yearly-tax-over-40"></div>
+            </div>
         </div>
 
         <div class="variant lump-sum">
@@ -354,6 +384,16 @@
             <div class="field">
                 <div class="key">Годишња нето зарада у динарима:</div>
                 <div class="value" data-value="lump-sum-neto-yearly"></div>
+            </div>
+
+            <div class="field mt-1">
+                <div class="key">Годишњи порез за млађе од 40 година:</div>
+                <div class="value" data-value="lump-sum-yearly-tax-under-40"></div>
+            </div>
+
+            <div class="field">
+                <div class="key">Годишњи порез за старије од 40 година:</div>
+                <div class="value" data-value="lump-sum-yearly-tax-over-40"></div>
             </div>
         </div>
 
@@ -460,6 +500,16 @@
                 <div class="key">Годишња нето зарада у динарима:</div>
                 <div class="value" data-value="entrepreneur-neto-yearly"></div>
             </div>
+
+            <div class="field mt-1">
+                <div class="key">Годишњи порез за млађе од 40 година:</div>
+                <div class="value" data-value="entrepreneur-yearly-tax-under-40"></div>
+            </div>
+
+            <div class="field">
+                <div class="key">Годишњи порез за старије од 40 година:</div>
+                <div class="value" data-value="entrepreneur-yearly-tax-over-40"></div>
+            </div>
         </div>
 
         <div class="variant employee">
@@ -561,6 +611,16 @@
                 <div class="key">Годишња нето зарада у динарима:</div>
                 <div class="value" data-value="employee-neto-yearly"></div>
             </div>
+
+            <div class="field mt-1">
+                <div class="key">Годишњи порез за млађе од 40 година:</div>
+                <div class="value" data-value="employee-yearly-tax-under-40"></div>
+            </div>
+
+            <div class="field">
+                <div class="key">Годишњи порез за старије од 40 година:</div>
+                <div class="value" data-value="employee-yearly-tax-over-40"></div>
+            </div>
         </div>
         <div class="variant llc">
             <div class="heading">
@@ -584,7 +644,7 @@
                         <strong>Mесечна нето зарада:</strong>
                     </label>
                     <div class="amount amount--rsd highlighted">
-                        <input type="number" inputmode="numeric" id="llc-desired-monthly-neto" name="llc_desired_monthly_neto" min="100" step="100" autofocus autocomplete="off" />
+                        <input type="number" inputmode="numeric" id="llc-desired-monthly-neto" name="llc_desired_monthly_neto" min="0" step="100" autocomplete="off" />
                     </div>
                 </div>
             </div>
@@ -696,17 +756,30 @@
                 <div class="key">Просечни месечни порез:</div>
                 <div class="value" data-value="llc-average-monthly-tax"></div>
             </div>
+
             <div class="field">
                 <div class="key">Просечна нето зарада месечно у динарима:</div>
                 <div class="value bold" data-value="llc-average-neto-monthly"></div>
             </div>
+
             <div class="field">
                 <div class="key">Просечна нето зарада месечно у страној валути:</div>
                 <div class="value bold" data-value="llc-average-neto-monthly-foreign"></div>
             </div>
+
             <div class="field">
                 <div class="key">Годишња нето зарада у динарима:</div>
                 <div class="value" data-value="llc-neto-yearly"></div>
+            </div>
+
+            <div class="field mt-1">
+                <div class="key">Годишњи порез за млађе од 40 година:</div>
+                <div class="value" data-value="llc-yearly-tax-under-40"></div>
+            </div>
+
+            <div class="field">
+                <div class="key">Годишњи порез за старије од 40 година:</div>
+                <div class="value" data-value="llc-yearly-tax-over-40"></div>
             </div>
         </div>
     </section>

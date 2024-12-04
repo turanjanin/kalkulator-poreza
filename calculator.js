@@ -37,6 +37,10 @@ const taxes = {
         health: 0.0515,
         unemployment: 0.0075,
     },
+    yearly: {
+        rate1: 0.10,
+        rate2: 0.15,
+    },
 };
 
 function formatAmount(value) {
@@ -98,6 +102,8 @@ function updateFreelancer1() {
     const netoPercentage = 1 - taxPercentage;
     const netoYearly = neto * 12;
 
+    const yearlyTax = getYearlyTax(netoYearly);
+
     document.querySelector('[data-value=freelancer1-quarterly-earnings]').innerText = formatAmount(quarterlyEarnings);
     document.querySelector('[data-value=freelancer1-standardized-costs]').innerText = formatAmount(standardizedCosts);
     document.querySelector('[data-value=freelancer1-tax-base]').innerText = formatAmount(taxBase);
@@ -112,6 +118,8 @@ function updateFreelancer1() {
     document.querySelector('[data-value=freelancer1-neto-percentage]').innerText = formatPercentage(netoPercentage);
     document.querySelector('.freelancer1 .bar span').style.width = `${netoPercentage * 100}%`;
     document.querySelector('[data-value=freelancer1-neto-yearly]').innerText = formatAmount(netoYearly);
+    document.querySelector('[data-value=freelancer1-yearly-tax-under-40]').innerText = formatAmount(yearlyTax.totalUnder40);
+    document.querySelector('[data-value=freelancer1-yearly-tax-over-40]').innerText = formatAmount(yearlyTax.totalOver40);
 }
 
 function updateFreelancer2() {
@@ -146,6 +154,8 @@ function updateFreelancer2() {
     const netoPercentage = 1 - taxPercentage;
     const netoYearly = neto * 12;
 
+    const yearlyTax = getYearlyTax(netoYearly);
+
     document.querySelector('[data-value=freelancer2-quarterly-earnings]').innerText = formatAmount(quarterlyEarnings);
     document.querySelector('[data-value=freelancer2-standardized-costs]').innerText = formatAmount(standardizedCosts);
     document.querySelector('[data-value=freelancer2-tax-base]').innerText = formatAmount(taxBase);
@@ -160,6 +170,8 @@ function updateFreelancer2() {
     document.querySelector('[data-value=freelancer2-neto-percentage]').innerText = formatPercentage(netoPercentage);
     document.querySelector('.freelancer2 .bar span').style.width = `${netoPercentage * 100}%`;
     document.querySelector('[data-value=freelancer2-neto-yearly]').innerText = formatAmount(netoYearly);
+    document.querySelector('[data-value=freelancer2-yearly-tax-under-40]').innerText = formatAmount(yearlyTax.totalUnder40);
+    document.querySelector('[data-value=freelancer2-yearly-tax-over-40]').innerText = formatAmount(yearlyTax.totalOver40);
 }
 
 function updateLumpSum() {
@@ -171,6 +183,8 @@ function updateLumpSum() {
     let taxPercentage = '';
     let netoPercentage = '';
     let netoYearly = '-';
+    let yearlyTaxUnder40 = '-';
+    let yearlyTaxOver40 = '-';
 
     const yearlyEarnings = bruto2 * 12;
 
@@ -181,6 +195,10 @@ function updateLumpSum() {
         taxPercentage = monthlyTax / bruto2;
         netoPercentage = 1 - taxPercentage;
         netoYearly = neto * 12;
+
+        const yearlyTax = getYearlyTax(netoYearly);
+        yearlyTaxUnder40 = yearlyTax.totalUnder40;
+        yearlyTaxOver40 = yearlyTax.totalOver40;
 
         document.querySelector('[data-value=lump-sum-neto-percentage]').innerText = formatPercentage(netoPercentage);
         document.querySelector('.lump-sum .bar span').style.width = `${netoPercentage * 100}%`;
@@ -194,6 +212,8 @@ function updateLumpSum() {
     document.querySelector('[data-value=lump-sum-neto-foreign]').innerText = formatAmount(netoForeign);
     document.querySelector('[data-value=lump-sum-tax-percentage]').innerText = formatPercentage(taxPercentage);
     document.querySelector('[data-value=lump-sum-neto-yearly]').innerText = formatAmount(netoYearly);
+    document.querySelector('[data-value=lump-sum-yearly-tax-under-40]').innerText = formatAmount(yearlyTaxUnder40);
+    document.querySelector('[data-value=lump-sum-yearly-tax-over-40]').innerText = formatAmount(yearlyTaxOver40);
 }
 
 function updateEntrepreneur() {
@@ -224,6 +244,8 @@ function updateEntrepreneur() {
     const netoPercentage = 1 - taxPercentage;
     const netoYearly = neto * 12;
 
+    const yearlyTax = getYearlyTax(netoYearly);
+
     document.querySelector('[data-value=entrepreneur-income-tax]').innerText = formatAmount(incomeTax);
     document.querySelector('[data-value=entrepreneur-pension]').innerText = formatAmount(pension);
     document.querySelector('[data-value=entrepreneur-health]').innerText = formatAmount(health);
@@ -238,6 +260,8 @@ function updateEntrepreneur() {
     document.querySelector('[data-value=entrepreneur-neto-percentage]').innerText = formatPercentage(netoPercentage);
     document.querySelector('.entrepreneur .bar span').style.width = `${netoPercentage * 100}%`;
     document.querySelector('[data-value=entrepreneur-neto-yearly]').innerText = formatAmount(netoYearly);
+    document.querySelector('[data-value=entrepreneur-yearly-tax-under-40]').innerText = formatAmount(yearlyTax.totalUnder40);
+    document.querySelector('[data-value=entrepreneur-yearly-tax-over-40]').innerText = formatAmount(yearlyTax.totalOver40);
 }
 
 function updateEmployee() {
@@ -271,6 +295,8 @@ function updateEmployee() {
     const netoPercentage = 1 - taxPercentage;
     const netoYearly = neto * 12;
 
+    const yearlyTax = getYearlyTax(netoYearly);
+
     document.querySelector('[data-value=employee-bruto2]').innerText = formatAmount(bruto2);
     document.querySelector('[data-value=employee-pension-employer]').innerText = formatAmount(pensionEmployer);
     document.querySelector('[data-value=employee-health-employer]').innerText = formatAmount(healthEmployer);
@@ -287,6 +313,8 @@ function updateEmployee() {
     document.querySelector('[data-value=employee-neto-percentage]').innerText = formatPercentage(netoPercentage);
     document.querySelector('.employee .bar span').style.width = `${netoPercentage * 100}%`;
     document.querySelector('[data-value=employee-neto-yearly]').innerText = formatAmount(netoYearly);
+    document.querySelector('[data-value=employee-yearly-tax-under-40]').innerText = formatAmount(yearlyTax.totalUnder40);
+    document.querySelector('[data-value=employee-yearly-tax-over-40]').innerText = formatAmount(yearlyTax.totalOver40);
 
 }
 
@@ -354,6 +382,8 @@ function updateLlc() {
     const taxPercentage = totalTax / (bruto2 * 12);
     const netoPercentage = Math.min(1 - taxPercentage, 1);
 
+    const yearlyTax = getYearlyTax(yearlyNeto);
+
     document.querySelector('[data-value=llc-tax-percentage]').innerText = formatPercentage(taxPercentage);
     document.querySelector('[data-value=llc-neto-percentage]').innerText = formatPercentage(netoPercentage);
 
@@ -382,6 +412,49 @@ function updateLlc() {
     document.querySelector('[data-value=llc-average-neto-monthly]').innerText = formatAmount(yearlyNeto / 12);
     document.querySelector('[data-value=llc-average-neto-monthly-foreign]').innerText = formatAmount(yearlyNetoForeign / 12);
     document.querySelector('[data-value=llc-neto-yearly]').innerText = formatAmount(yearlyNeto);
+    document.querySelector('[data-value=llc-yearly-tax-under-40]').innerText = formatAmount(yearlyTax.totalUnder40);
+    document.querySelector('[data-value=llc-yearly-tax-over-40]').innerText = formatAmount(yearlyTax.totalOver40);
+}
+
+function getYearlyTax(yearlyNetoSalary) {
+    const averageYearlyBrutoSalary = parseFloat(document.getElementById('average-yearly-bruto-salary').value);
+
+    const untaxableIncome = averageYearlyBrutoSalary * 3;
+    const personalDeduction = averageYearlyBrutoSalary * 0.4;
+    const under40BenefitDeduction = averageYearlyBrutoSalary * 3;
+    const taxRate2Limit = averageYearlyBrutoSalary * 6;
+
+    const taxableIncomeUnder40 = Math.max(yearlyNetoSalary - untaxableIncome - under40BenefitDeduction, 0);
+    const taxableIncomeOver40 = Math.max(yearlyNetoSalary - untaxableIncome, 0);
+
+    const taxableIncomeUnder40AfterDeduction = Math.max(taxableIncomeUnder40 - personalDeduction, 0);
+    const taxableIncomeOver40AfterDeduction = Math.max(taxableIncomeOver40 - personalDeduction, 0);
+
+    const rate1TaxBaseUnder40 = Math.min(taxableIncomeUnder40AfterDeduction, taxRate2Limit);
+    const rate1TaxBaseOver40 = Math.min(taxableIncomeOver40AfterDeduction, taxRate2Limit);
+
+    const rate2TaxBaseUnder40 = Math.max(taxableIncomeUnder40 - taxRate2Limit, 0);
+    const rate2TaxBaseOver40 = Math.max(taxableIncomeOver40 - taxRate2Limit, 0);
+
+    const rate1TaxUnder40 = rate1TaxBaseUnder40 * taxes.yearly.rate1;
+    const rate1TaxOver40 = rate1TaxBaseOver40 * taxes.yearly.rate1;
+    const rate2TaxUnder40 = rate2TaxBaseUnder40 * taxes.yearly.rate2;
+    const rate2TaxOver40 = rate2TaxBaseOver40 * taxes.yearly.rate2;
+
+    const totalUnder40 = rate1TaxUnder40 + rate2TaxUnder40;
+    const totalOver40 = rate1TaxOver40 + rate2TaxOver40;
+
+    return {
+        taxableIncomeUnder40AfterDeduction,
+        rate1TaxUnder40,
+        rate2TaxUnder40,
+        totalUnder40,
+
+        taxableIncomeOver40AfterDeduction,
+        rate1TaxOver40,
+        rate2TaxOver40,
+        totalOver40,
+    };
 }
 
 function updateLabels() {
