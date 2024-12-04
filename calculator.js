@@ -352,7 +352,7 @@ function updateLlc() {
     const yearlyNeto = bruto2 * 12 - totalTax;
     const yearlyNetoForeign = yearlyNeto / exchangeRate;
     const taxPercentage = totalTax / (bruto2 * 12);
-    const netoPercentage = 1 - taxPercentage;
+    const netoPercentage = Math.min(1 - taxPercentage, 1);
 
     document.querySelector('[data-value=llc-tax-percentage]').innerText = formatPercentage(taxPercentage);
     document.querySelector('[data-value=llc-neto-percentage]').innerText = formatPercentage(netoPercentage);
