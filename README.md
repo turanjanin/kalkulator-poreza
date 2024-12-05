@@ -7,6 +7,7 @@ Simple online calculator that, given the bruto 2 amount, calculates salary after
 - Entrepreneur with personal income (предузетник који исплаћује личну зараду)
 - Regular employment (регуларно запослен)
 - Single-employee LLC with yearly bonus (ДОО са исплатом годишњег бонуса)
+- Single-employee LLC with dividend payout (ДОО са исплатом дивиденде)
 
 
 ## Authors

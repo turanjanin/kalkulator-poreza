@@ -698,7 +698,7 @@
             <div class="details mt-1">
                 <div class="field">
                     <div class="key">
-                        Профит након исплате плата:
+                        Добит након исплате 11 плата:
                         <div class="description">Уједно и висина бонуса која ће се придодати 12. плати.</div>
                     </div>
                     <div class="value" data-value="llc-profit"></div>
@@ -780,6 +780,138 @@
             <div class="field">
                 <div class="key">Годишњи порез за старије од 40 година:</div>
                 <div class="value" data-value="llc-yearly-tax-over-40"></div>
+            </div>
+        </div>
+        <div class="variant llc-dividend">
+            <div class="heading">
+                <h2>ДОО са исплатом дивиденде</h2>
+            </div>
+
+            <div class="distribution">
+                <div class="values">
+                    <div data-value="llc-dividend-neto-percentage"></div>
+                    <div data-value="llc-dividend-tax-percentage"></div>
+                </div>
+                <div class="bar"><span></span></div>
+                <div class="labels">
+                    <div>нето</div>
+                    <div>порези и доприноси</div>
+                </div>
+            </div>
+            <div class="details mb-1">
+                <div class="field">
+                    <label for="llc-dividend-desired-monthly-neto">
+                        <strong>Mесечна нето зарада:</strong>
+                    </label>
+                    <div class="amount amount--rsd highlighted">
+                        <input type="number" inputmode="numeric" id="llc-dividend-desired-monthly-neto" name="llc_dividend_desired_monthly_neto" min="0" step="100" autocomplete="off" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="details">
+                <div class="field">
+                    <div class="key">
+                        Бруто 2:
+                    </div>
+                    <div class="value" data-value="llc-dividend-monthly-bruto2"></div>
+                </div>
+                <div class="field">
+                    <div class="key">
+                        Пензијско и инвалидско осигурање:
+                        <div class="description">На терет запосленог и послодавца</div>
+                    </div>
+                    <div class="value" data-value="llc-dividend-monthly-pension"></div>
+                </div>
+                <div class="field">
+                    <div class="key">
+                        Здравствено осигурање:
+                        <div class="description">На терет запосленог и послодавца</div>
+                    </div>
+                    <div class="value" data-value="llc-dividend-monthly-health"></div>
+                </div>
+                <div class="field">
+                    <div class="key">
+                        Порез на зараду:
+                    </div>
+                    <div class="value" data-value="llc-dividend-monthly-income-tax"></div>
+                </div>
+                <div class="field">
+                    <div class="key">
+                        Допринос за незапосленост:
+                    </div>
+                    <div class="value" data-value="llc-dividend-monthly-unemployment"></div>
+                </div>
+                <div class="field">
+                    <div class="key">Укупни месечни порез:</div>
+                    <div class="value" data-value="llc-dividend-monthly-tax"></div>
+                </div>
+                <div class="field">
+                    <div class="key">Нето зарада месечно у динарима:</div>
+                    <div class="value" data-value="llc-dividend-monthly-neto"></div>
+                </div>
+                <div class="field">
+                    <div class="key">Нето зарада у страној валути:</div>
+                    <div class="value bold" data-value="llc-dividend-monthly-neto-foreign"></div>
+                </div>
+            </div>
+            <div class="details mt-1 mb-1">
+                <div class="field">
+                    <div class="key">
+                        Добит након исплате плата пре опорезивања:
+                    </div>
+                    <div class="value" data-value="llc-dividend-profit-before-tax"></div>
+                </div>
+                <div class="field">
+                    <div class="key">
+                        Порез на добит:
+                        <div class="description"><span data-value="llc-dividend-profit-tax-percentage"></span> добити пре опорезивања</div>
+                    </div>
+                    <div class="value" data-value="llc-dividend-profit-tax"></div>
+                </div>
+                <div class="field">
+                    <div class="key">
+                        Добит након опорезивања:
+                    </div>
+                    <div class="value" data-value="llc-dividend-profit-after-tax"></div>
+                </div>
+                <div class="field">
+                    <div class="key">
+                        Порез на дивиденду:
+                        <div class="description"><span data-value="llc-dividend-dividend-tax-percentage"></span> добити после опорезивања</div>
+                    </div>
+                    <div class="value" data-value="llc-dividend-dividend-tax"></div>
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="key">Просечни месечни порез:</div>
+                <div class="value" data-value="llc-dividend-average-monthly-tax"></div>
+            </div>
+
+            <div class="field">
+                <div class="key">Просечна нето зарада месечно у динарима:</div>
+                <div class="value bold" data-value="llc-dividend-average-neto-monthly"></div>
+            </div>
+
+            <div class="field">
+                <div class="key">Просечна нето зарада месечно у страној валути:</div>
+                <div class="value bold" data-value="llc-dividend-average-neto-monthly-foreign"></div>
+            </div>
+
+            <div class="field">
+                <div class="key">Годишња нето зарада у динарима:</div>
+                <div class="value" data-value="llc-dividend-neto-yearly"></div>
+            </div>
+
+            <div class="field mt-1">
+                <div class="key">Годишњи порез за млађе од 40 година:</div>
+                <div class="value" data-value="llc-dividend-yearly-tax-under-40"></div>
+            </div>
+
+            <div class="field">
+                <div class="key">Годишњи порез за старије од 40 година:</div>
+                <div class="value" data-value="llc-dividend-yearly-tax-over-40"></div>
             </div>
         </div>
     </section>
